@@ -129,10 +129,16 @@ body {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    place-items: start;
   }
 
   .container .years {
     margin-bottom: 10vh;
+  }
+  .container span{
+    display: flex;
+    flex-grow: 1;
+    margin-top: 30px;
   }
 }
 
@@ -153,7 +159,7 @@ body {
     margin-left: 20px;
     margin-right: 20px;
   }
-  .output{
+  .output {
     font-size: 15px;
   }
 }
