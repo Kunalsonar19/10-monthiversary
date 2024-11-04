@@ -14,6 +14,8 @@ const outputInYears = document.querySelector(".years");
 const arrowUp = document.querySelector(".up");
 const arrowDown = document.querySelector(".down");
 const header = document.getElementById("main-header");
+const anniversaryDateElem = document.querySelector(".anniversary-date"); // Anniversary date element
+const firstMetDateElem = document.querySelector(".first-met-date"); // First met date element
 
 const textArray = document.querySelector(".output");
 
@@ -30,6 +32,18 @@ outputInMonths.addEventListener("click", () => updateUnit("months"));
 outputInYears.addEventListener("click", () => updateUnit("years"));
 arrowUp.addEventListener("click", changeText);
 arrowDown.addEventListener("click", changeTextBack);
+
+// Function to format date to desired string
+function formatDate(date) {
+  const options = { day: 'numeric', month: 'long', year: 'numeric' };
+  return date.toLocaleDateString('en-US', options).replace(',', '');
+}
+
+// Function to update the date info display
+function updateDateInfo() {
+  anniversaryDateElem.innerText = `Propose: ${formatDate(ourAnniversary)}`;
+  firstMetDateElem.innerText = `First Meet: ${formatDate(ourDayWeMet)}`;
+}
 
 // Function to calculate time difference in days
 function calculateDays() {
@@ -75,17 +89,24 @@ function updateUnit(unit) {
 
 // Function to change header text and toggle date reference
 function changeText() {
-  header.innerText = "How long do we know each other";
+  header.innerText = "Journey Since We First Met ❤️";
   arrowUp.style.display = "none";
   arrowDown.style.display = "flex";
   useAnniversary = false; // Switch to using 'the day we met' date
+  firstMetDateElem.style.display = "block"; // Show the first met date
+  anniversaryDateElem.style.display = "none"; // Hide the anniversary date
   displayTimeIn(lastSelectedUnit); // Automatically update display
 }
 
 function changeTextBack() {
-  header.innerText = "How long have we been together";
+  header.innerText = "Moments Since Our Story Began ❤️";
   arrowUp.style.display = "flex";
   arrowDown.style.display = "none";
   useAnniversary = true; // Switch back to using anniversary date
+  firstMetDateElem.style.display = "none"; // Hide the first met date
+  anniversaryDateElem.style.display = "block"; // Show the anniversary date
   displayTimeIn(lastSelectedUnit); // Automatically update display
 }
+
+// Initial call to display dates
+updateDateInfo();

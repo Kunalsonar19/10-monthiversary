@@ -36,7 +36,7 @@ body {
 }
 
 .container-header {
-  padding: 40px 90px;
+  padding: 30px 90px;
   box-shadow: -2px 3px 10px rgba(0, 0, 0, 0.25);
   border-radius: 88px;
   font-family: var(--text--opens-sans);
@@ -49,6 +49,13 @@ body {
   font-weight: bolder;
   font-size: 25px;
   text-transform: capitalize;
+}
+.container-header span {
+  font-size: 16px;
+  font-weight: 200;
+  display: block;
+  margin: 10px auto 0 auto;
+  text-align: center;
 }
 
 .container-header + span .fas {
